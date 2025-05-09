@@ -25,14 +25,6 @@ The Environments section allows you to:
 2. **Select Active Environment**: Choose which environment configuration should be active and available to the frontend.
 3. **Configure JavaScript Variable Name**: Define the global JavaScript variable name that will be used to access environment variables in the browser (default: `ENV`).
 
-Each environment consists of key-value pairs that represent your configuration. These values become accessible in your frontend JavaScript through the configured global variable.
-
-Example environment configuration:
-```
-API_URL: https://api.example.com
-FEATURE_FLAGS_ENABLED: true
-OAUTH_my_api: true  # This references an OAuth entry (see OAuth Configuration)
-```
 
 ### OAuth Configuration
 
@@ -42,8 +34,6 @@ The OAuth section allows you to:
 2. **Define OAuth Entry IDs**: Create unique identifiers for each OAuth endpoint.
 3. **Configure Grant Types**: Support for various OAuth grant types, including Client Credentials.
 4. **Manage Client IDs and Secrets**: Securely store authentication credentials.
-
-OAuth entries can be referenced in environment variables by using the `OAUTH_` prefix followed by the Entry ID.
 
 ### Proxy Configuration
 
@@ -90,47 +80,18 @@ console.log(window.ENV);
 // Access a specific variable
 const apiUrl = window.ENV.API_URL;
 
-// Access an OAuth token
-const token = window.ENV.OAUTH_my_api.access_token;
-```
-
 ### Making Authenticated API Requests
-
-Using OAuth tokens directly (if exposed to frontend):
-```javascript
-fetch('https://api.example.com/data', {
-  headers: {
-    'Authorization': `Bearer ${window.ENV.OAUTH_my_api.access_token}`
-  }
-});
-```
 
 Using the proxy (more secure):
 ```javascript
 // The proxy will automatically add authentication headers
-fetch('/index.php?rex-api-call=proxy_request&proxy=my_api_proxy&endpoint=/data');
+fetch('/index.php?rex-api-call=proxy_request&proxy=my-proxy-id&target=https://....');
 ```
 
 The proxy approach is more secure because:
 - Authentication credentials remain on the server
 - Tokens are not exposed in frontend code
 - The server can refresh expired tokens automatically
-
-## Debugging and Troubleshooting
-
-The addon includes several features to help with debugging:
-
-- **Debug Mode**: Enable detailed logging for troubleshooting
-- **Test Configuration Panel**: View the active environment configuration
-- **Proxy Testing**: Test proxy endpoints directly from the REDAXO backend
-- **SSL Verification Control**: Disable SSL verification for development environments with self-signed certificates
-
-If you encounter issues:
-
-1. Enable Debug Mode in the settings
-2. Check the REDAXO system log for detailed information
-3. Verify that your OAuth credentials are correct
-4. Check the browser console for JavaScript errors
 
 ## Security Considerations
 
