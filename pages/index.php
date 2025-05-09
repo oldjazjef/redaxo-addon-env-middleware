@@ -6,13 +6,8 @@
  * @package redaxo\env-middleware
  */
 
-// Prevent direct access to this file
-if (!defined('REDAXO')) {
-    die('Direct access denied!');
-}
+// Display the addon title
+echo rex_view::title(rex_i18n::msg('env_middleware_title'));
 
-// Get the addon instance
-$addon = rex_addon::get('env-middleware');
-
-// Redirect to the first subpage (settings)
-rex_response::sendRedirect(rex_url::currentBackendPage(['page' => 'env-middleware/settings']));
+// Include the current subpage (settings, environments, proxy)
+rex_be_controller::includeCurrentPageSubPath();

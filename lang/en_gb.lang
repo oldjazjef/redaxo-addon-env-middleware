@@ -1,35 +1,78 @@
 env_middleware_title = Environment Middleware
 env_middleware_settings = Settings
-env_middleware_save = Save settings
-env_middleware_saved = Settings have been saved!
-env_middleware_error = An error occurred!
-env_middleware_description = This addon provides middleware functionality for environment variables.
-env_middleware_env_file_path = Path to .env file
-env_middleware_auto_load = Auto-load environment variables at startup
 env_middleware_environments = Environments
+env_middleware_oauth = OAuth
 env_middleware_proxy = Proxy
 
-# Environment page translations
-env_middleware_environment_name = Name
-env_middleware_environment_description = Description
-env_middleware_environment_variables = Variables
-env_middleware_environment_active = Active
-env_middleware_environment_actions = Actions
-env_middleware_environment_add = Add Environment
-env_middleware_environment_delete = Delete
-env_middleware_environment_add_variable = Add Variable
-env_middleware_environment_min_required = At least one environment is required.
+# General translations
+save = Save
+environment_not_found = Selected environment not found
+settings_saved = Settings saved successfully!
 
-# Proxy page translations
-env_middleware_proxy_settings = Proxy Settings
-env_middleware_proxy_enabled = Enable Proxy
-env_middleware_proxy_host = Proxy Host
-env_middleware_proxy_port = Proxy Port
-env_middleware_proxy_user = Username
-env_middleware_proxy_password = Password
-env_middleware_proxy_saved = Proxy settings have been saved!
-env_middleware_no_proxy = No Proxy
-env_middleware_no_proxy_note = Comma-separated list of hosts that should bypass the proxy
-env_middleware_proxy_usage = Proxy Usage
-env_middleware_proxy_info = You can use the proxy settings in your code by retrieving the environment variables.
-env_middleware_proxy_usage_example = Example with Guzzle HTTP client
+# Settings page
+settings = Settings
+settings_description = Configure environment variables prefix
+env_prefix = Environment Variable Prefix
+general_settings = General Settings
+debug_mode = Debug Mode
+debug_mode_help = When enabled, debug information will be output to the error log
+disable_ssl_verification = Disable SSL Certificate Verification
+disable_ssl_verification_help = WARNING: Only enable this in development environments with self-signed certificates. This is a security risk in production.
+test_settings = Test Current Configuration
+current_configuration = Current Configuration
+frontend_test_instructions = To test in the frontend, add <code>console.log(window.{0});</code> to your JavaScript code or run it in the browser console.
+select_active_environment = Select Active Environment
+active_environment = Active Environment
+active_environment_help = The selected environment will be available in the frontend
+none = None
+
+# Environments page
+environments = Environments
+environments_description = Configure environment variables
+name = Name
+value = Value
+add_environment = Add Environment
+active_environment = Active Environment
+select_active_environment = Select Active Environment
+none = None
+frontend_access = Frontend Access
+javascript_variable_name = JavaScript Variable Name
+javascript_variable_help = Your environment variables will be accessible via window.{0} in the frontend
+oauth_integration = OAuth Integration
+oauth_variable_info = To use OAuth tokens in your environment, create an environment variable starting with <code>OAUTH_</code> followed by the Entry ID from the OAuth page. For example, <code>OAUTH_my_api</code> will be replaced with the token data from the OAuth entry with ID <code>my_api</code>.
+
+# oauth page
+oauth = OAuth Settings
+oauth_description = Configure OAuth settings for environment variables
+oauth_oauth_entries = OAuth Entries
+oauth_oauth_url = OAuth URL
+oauth_oauth_grant_type = Grant Type
+oauth_oauth_client_id = Client ID
+oauth_oauth_client_secret = Client Secret
+oauth_add_oauth_entry = Add OAuth Entry
+oauth_remove_oauth_entry = Remove
+oauth_client_credentials = Client Credentials
+oauth_password = Password
+oauth_authorization_code = Authorization Code
+entry_id = Entry ID
+entry_id_help = A unique identifier for this OAuth entry
+
+# proxy page
+proxy = Proxy Settings
+proxy_description = Configure proxy settings for environment variables
+proxy_proxy_entries = Proxy Entries
+proxy_id = Proxy ID
+proxy_id_help = A unique identifier for this proxy entry
+proxy_oauth_entry_id = OAuth Entry
+proxy_oauth_entry_id_help = Select the OAuth entry to use for authentication
+proxy_add_proxy_entry = Add Proxy Entry
+proxy_remove_proxy_entry = Remove
+proxy_select_oauth_entry = Select OAuth Entry
+
+# api
+api_proxy_missing_params = Missing required parameters: proxy-id and target must be provided
+api_proxy_not_found = Proxy ID not found: %s
+api_oauth_not_found = OAuth entry not found for proxy: %s
+api_token_error = Error obtaining token: %s
+api_no_access_token = No access token available
+api_curl_error = cURL error: %s

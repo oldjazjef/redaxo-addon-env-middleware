@@ -1,16 +1,19 @@
 package: env-middleware
-version: '1.0.0'
-author: Your Name
-supportpage: https://github.com/yourusername/redaxo-addon-env-middleware
+version: "1.0.0"
+author: oldjazjef
+supportpage: https://github.com/oldjazjef/redaxo-addon-env-middleware
 
 requires:
-    redaxo: '^5.10.0'
-    php: '>=7.3'
+  redaxo: "^5.10.0"
+  php: ">=7.3"
+
+boot: true
 
 page:
-    title: 'translate:env_middleware_title'
-    perm: admin
-    subpages:
-        settings: { title: 'translate:env_middleware_settings' }
-        environments: { title: 'translate:env_middleware_environments' }
-        proxy: { title: 'translate:env_middleware_proxy' }
+  title: "translate:env_middleware_title"
+  perm: admin
+  subpages:
+    settings: { title: "translate:env_middleware_settings" }
+    environments: { title: "translate:env_middleware_environments" }
+    oauth: { title: "translate:env_middleware_oauth" }
+    proxy: { title: "translate:env_middleware_proxy" }

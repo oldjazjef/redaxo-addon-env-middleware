@@ -1,35 +1,78 @@
-env_middleware_title = Umgebungs-Middleware
+env_middleware_title = Environment Middleware
 env_middleware_settings = Einstellungen
-env_middleware_save = Einstellungen speichern
-env_middleware_saved = Einstellungen wurden gespeichert!
-env_middleware_error = Ein Fehler ist aufgetreten!
-env_middleware_description = Dieses Addon bietet Middleware-Funktionalität für Umgebungsvariablen.
-env_middleware_env_file_path = Pfad zur .env-Datei
-env_middleware_auto_load = Umgebungsvariablen beim Start automatisch laden
 env_middleware_environments = Umgebungen
+env_middleware_oauth = OAuth
 env_middleware_proxy = Proxy
 
-# Environment page translations
-env_middleware_environment_name = Name
-env_middleware_environment_description = Beschreibung
-env_middleware_environment_variables = Variablen
-env_middleware_environment_active = Aktiv
-env_middleware_environment_actions = Aktionen
-env_middleware_environment_add = Umgebung hinzufügen
-env_middleware_environment_delete = Löschen
-env_middleware_environment_add_variable = Variable hinzufügen
-env_middleware_environment_min_required = Mindestens eine Umgebung ist erforderlich.
+# General translations
+save = Speichern
+environment_not_found = Ausgewählte Umgebung nicht gefunden
+settings_saved = Einstellungen erfolgreich gespeichert!
 
-# Proxy page translations
-env_middleware_proxy_settings = Proxy-Einstellungen
-env_middleware_proxy_enabled = Proxy aktivieren
-env_middleware_proxy_host = Proxy-Host
-env_middleware_proxy_port = Proxy-Port
-env_middleware_proxy_user = Benutzername
-env_middleware_proxy_password = Passwort
-env_middleware_proxy_saved = Proxy-Einstellungen wurden gespeichert!
-env_middleware_no_proxy = Kein Proxy
-env_middleware_no_proxy_note = Kommagetrennte Liste von Hosts, die den Proxy umgehen sollen
-env_middleware_proxy_usage = Proxy-Verwendung
-env_middleware_proxy_info = Sie können die Proxy-Einstellungen in Ihrem Code verwenden, indem Sie die Umgebungsvariablen abrufen.
-env_middleware_proxy_usage_example = Beispiel mit Guzzle HTTP-Client
+# Settings page
+settings = Einstellungen
+settings_description = Konfigurieren Sie das Präfix für Umgebungsvariablen
+env_prefix = Präfix für Umgebungsvariablen
+general_settings = Allgemeine Einstellungen
+debug_mode = Debug-Modus
+debug_mode_help = Wenn aktiviert, werden Debug-Informationen in das Fehlerprotokoll geschrieben
+disable_ssl_verification = SSL-Zertifikatprüfung deaktivieren
+disable_ssl_verification_help = WARNUNG: Aktivieren Sie dies nur in Entwicklungsumgebungen mit selbstsignierten Zertifikaten. Dies stellt ein Sicherheitsrisiko in der Produktion dar.
+test_settings = Aktuelle Konfiguration testen
+current_configuration = Aktuelle Konfiguration
+frontend_test_instructions = Um im Frontend zu testen, fügen Sie <code>console.log(window.{0});</code> zu Ihrem JavaScript-Code hinzu oder führen Sie es in der Browser-Konsole aus.
+select_active_environment = Aktive Umgebung auswählen
+active_environment = Aktive Umgebung
+active_environment_help = Die ausgewählte Umgebung wird im Frontend verfügbar sein
+none = Keine
+
+# Environments page
+environments = Umgebungen
+environments_description = Umgebungsvariablen konfigurieren
+name = Name
+value = Wert
+add_environment = Umgebung hinzufügen
+active_environment = Aktive Umgebung
+select_active_environment = Aktive Umgebung auswählen
+none = Keine
+frontend_access = Frontend-Zugriff
+javascript_variable_name = JavaScript-Variablenname
+javascript_variable_help = Ihre Umgebungsvariablen werden im Frontend über window.{0} zugänglich sein
+oauth_integration = OAuth-Integration
+oauth_variable_info = Um OAuth-Tokens in Ihrer Umgebung zu verwenden, erstellen Sie eine Umgebungsvariable, die mit <code>OAUTH_</code> beginnt, gefolgt von der Eintrags-ID aus der OAuth-Seite. Zum Beispiel wird <code>OAUTH_my_api</code> durch die Token-Daten des OAuth-Eintrags mit der ID <code>my_api</code> ersetzt.
+
+# oauth page
+oauth = OAuth-Einstellungen
+oauth_description = OAuth-Einstellungen für Umgebungsvariablen konfigurieren
+oauth_oauth_entries = OAuth-Einträge
+oauth_oauth_url = OAuth-URL
+oauth_oauth_grant_type = Grant-Typ
+oauth_oauth_client_id = Client-ID
+oauth_oauth_client_secret = Client-Secret
+oauth_add_oauth_entry = OAuth-Eintrag hinzufügen
+oauth_remove_oauth_entry = Entfernen
+oauth_client_credentials = Client Credentials
+oauth_password = Passwort
+oauth_authorization_code = Authorization Code
+entry_id = Eintrags-ID
+entry_id_help = Eine eindeutige Kennung für diesen OAuth-Eintrag
+
+# proxy page
+proxy = Proxy-Einstellungen
+proxy_description = Proxy-Einstellungen für Umgebungsvariablen konfigurieren
+proxy_proxy_entries = Proxy-Einträge
+proxy_id = Proxy-ID
+proxy_id_help = Eine eindeutige Kennung für diesen Proxy-Eintrag
+proxy_oauth_entry_id = OAuth-Eintrag
+proxy_oauth_entry_id_help = Wählen Sie den OAuth-Eintrag für die Authentifizierung
+proxy_add_proxy_entry = Proxy-Eintrag hinzufügen
+proxy_remove_proxy_entry = Entfernen
+proxy_select_oauth_entry = OAuth-Eintrag auswählen
+
+# api
+api_proxy_missing_params = Fehlende erforderliche Parameter: proxy-id und target müssen angegeben werden
+api_proxy_not_found = Proxy-ID nicht gefunden: %s
+api_oauth_not_found = OAuth-Eintrag für Proxy nicht gefunden: %s
+api_token_error = Fehler beim Abrufen des Tokens: %s
+api_no_access_token = Kein Zugriffstoken verfügbar
+api_curl_error = cURL-Fehler: %s
