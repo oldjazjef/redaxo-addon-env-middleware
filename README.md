@@ -83,7 +83,6 @@ const apiUrl = window.ENV.API_URL;
 ### Making Authenticated API Requests
 
 Using the proxy (more secure):
-```javascript
 // The proxy will automatically add authentication headers
 fetch('/index.php?rex-api-call=proxy_request&proxy=my-proxy-id&target=https://....');
 ```
