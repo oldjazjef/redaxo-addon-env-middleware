@@ -1,0 +1,35 @@
+env_middleware_title = Environment Middleware
+env_middleware_settings = Settings
+env_middleware_save = Save settings
+env_middleware_saved = Settings have been saved!
+env_middleware_error = An error occurred!
+env_middleware_description = This addon provides middleware functionality for environment variables.
+env_middleware_env_file_path = Path to .env file
+env_middleware_auto_load = Auto-load environment variables at startup
+env_middleware_environments = Environments
+env_middleware_proxy = Proxy
+
+# Environment page translations
+env_middleware_environment_name = Name
+env_middleware_environment_description = Description
+env_middleware_environment_variables = Variables
+env_middleware_environment_active = Active
+env_middleware_environment_actions = Actions
+env_middleware_environment_add = Add Environment
+env_middleware_environment_delete = Delete
+env_middleware_environment_add_variable = Add Variable
+env_middleware_environment_min_required = At least one environment is required.
+
+# Proxy page translations
+env_middleware_proxy_settings = Proxy Settings
+env_middleware_proxy_enabled = Enable Proxy
+env_middleware_proxy_host = Proxy Host
+env_middleware_proxy_port = Proxy Port
+env_middleware_proxy_user = Username
+env_middleware_proxy_password = Password
+env_middleware_proxy_saved = Proxy settings have been saved!
+env_middleware_no_proxy = No Proxy
+env_middleware_no_proxy_note = Comma-separated list of hosts that should bypass the proxy
+env_middleware_proxy_usage = Proxy Usage
+env_middleware_proxy_info = You can use the proxy settings in your code by retrieving the environment variables.
+env_middleware_proxy_usage_example = Example with Guzzle HTTP client

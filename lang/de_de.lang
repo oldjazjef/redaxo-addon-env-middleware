@@ -1,0 +1,35 @@
+env_middleware_title = Umgebungs-Middleware
+env_middleware_settings = Einstellungen
+env_middleware_save = Einstellungen speichern
+env_middleware_saved = Einstellungen wurden gespeichert!
+env_middleware_error = Ein Fehler ist aufgetreten!
+env_middleware_description = Dieses Addon bietet Middleware-Funktionalität für Umgebungsvariablen.
+env_middleware_env_file_path = Pfad zur .env-Datei
+env_middleware_auto_load = Umgebungsvariablen beim Start automatisch laden
+env_middleware_environments = Umgebungen
+env_middleware_proxy = Proxy
+
+# Environment page translations
+env_middleware_environment_name = Name
+env_middleware_environment_description = Beschreibung
+env_middleware_environment_variables = Variablen
+env_middleware_environment_active = Aktiv
+env_middleware_environment_actions = Aktionen
+env_middleware_environment_add = Umgebung hinzufügen
+env_middleware_environment_delete = Löschen
+env_middleware_environment_add_variable = Variable hinzufügen
+env_middleware_environment_min_required = Mindestens eine Umgebung ist erforderlich.
+
+# Proxy page translations
+env_middleware_proxy_settings = Proxy-Einstellungen
+env_middleware_proxy_enabled = Proxy aktivieren
+env_middleware_proxy_host = Proxy-Host
+env_middleware_proxy_port = Proxy-Port
+env_middleware_proxy_user = Benutzername
+env_middleware_proxy_password = Passwort
+env_middleware_proxy_saved = Proxy-Einstellungen wurden gespeichert!
+env_middleware_no_proxy = Kein Proxy
+env_middleware_no_proxy_note = Kommagetrennte Liste von Hosts, die den Proxy umgehen sollen
+env_middleware_proxy_usage = Proxy-Verwendung
+env_middleware_proxy_info = Sie können die Proxy-Einstellungen in Ihrem Code verwenden, indem Sie die Umgebungsvariablen abrufen.
+env_middleware_proxy_usage_example = Beispiel mit Guzzle HTTP-Client
