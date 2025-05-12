@@ -1,6 +1,6 @@
 package: env-middleware
 version: "1.0.0"
-author: oldjazjef
+author: Emanuel Mistretta
 supportpage: https://github.com/oldjazjef/redaxo-addon-env-middleware
 
 requires:
