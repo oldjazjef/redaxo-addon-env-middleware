@@ -2,7 +2,7 @@
 /**
  * Environment Middleware Addon - API Proxy Endpoint
  * 
- * @author Your Name
+ * @author Emanuel Mistretta
  * @package redaxo\env-middleware
  */
 

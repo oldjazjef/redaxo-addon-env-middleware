@@ -2,7 +2,7 @@
 /**
  * Environment Middleware Addon - Main Page
  * 
- * @author Your Name
+ * @author Emanuel Mistretta
  * @package redaxo\env-middleware
  */
 
