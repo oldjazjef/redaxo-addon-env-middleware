@@ -2,7 +2,7 @@
 /**
  * Environment Middleware Addon - Proxy Configuration Page
  * 
- * @author Your Name
+ * @author Emanuel Mistretta
  * @package redaxo\env-middleware
  */
 

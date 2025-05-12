@@ -34,35 +34,6 @@ if (!rex::isBackend()) {
         if (!empty($activeEnvironment) && isset($environments[$activeEnvironment])) {
             $envData = $environments[$activeEnvironment];
             
-            // Add OAuth tokens to environment data if keys starting with OAUTH_ are present
-            foreach ($envData as $key => $value) {
-                if (strpos($key, 'OAUTH_') === 0) {
-                    $oauthEntryId = substr($key, 6); // Remove 'OAUTH_' prefix
-                    $tokenData = env_middleware_get_oauth_token($oauthEntryId);
-                    
-                    if ($tokenData) {
-                        // Replace the OAUTH_ placeholder with the actual token data
-                        $envData[$key] = $tokenData;
-                        
-                        // If debug mode is enabled, log the token data (but redact sensitive info)
-                        if ($debugMode) {
-                            $logData = $tokenData;
-                            if (isset($logData['access_token'])) {
-                                $logData['access_token'] = substr($logData['access_token'], 0, 10) . '...';
-                            }
-                            error_log('Env-Middleware: OAuth token for ' . $oauthEntryId . ': ' . print_r($logData, true));
-                        }
-                    } else {
-                        // If token retrieval failed, provide an error status
-                        $envData[$key] = ['error' => 'Failed to retrieve OAuth token'];
-                        
-                        if ($debugMode) {
-                            error_log('Env-Middleware: Failed to retrieve OAuth token for ' . $oauthEntryId);
-                        }
-                    }
-                }
-            }
-            
             // Format data as JavaScript object
             $jsOutput = '<script type="text/javascript">' . PHP_EOL;
             $jsOutput .= 'window.' . $jsVariableName . ' = ' . json_encode($envData, JSON_PRETTY_PRINT) . ';' . PHP_EOL;
