@@ -1,108 +1,102 @@
-# Environment Middleware Addon for REDAXO
+# Environment- & Proxy-Middleware-Addon für REDAXO
 
-This addon provides an integrated solution for managing environments, OAuth authentication, and API proxying in REDAXO. It allows you to securely expose environment variables to the frontend while handling sensitive authentication details on the server.
+Dieses Addon bietet eine integrierte Lösung zur Verwaltung von Umgebungen, OAuth-Authentifizierung und API-Proxying in REDAXO. Es ermöglicht die sichere Bereitstellung von Umgebungsvariablen im Frontend und die serverseitige Handhabung sensibler Authentifizierungsdaten.
 
-## Features
+## Funktionen
 
-- Configure and manage multiple environments with different settings
-- Make environment variables accessible in the frontend via JavaScript
-- Configure OAuth endpoints with authentication information
-- Secure API communication with proxy endpoints that automatically inject authentication
-- SSL certificate verification controls for development environments
+- Konfiguration und Verwaltung mehrerer Umgebungen mit unterschiedlichen Einstellungen  
+- Zugriff auf Umgebungsvariablen im Frontend über JavaScript  
+- Konfiguration von OAuth-Endpunkten mit Authentifizierungsinformationen  
+- Sichere API-Kommunikation über Proxy-Endpunkte mit automatischer Authentifizierung  
+- Kontrolle der SSL-Zertifikatsprüfung für Entwicklungsumgebungen  
 
 ## Installation
 
-1. Install the addon via the REDAXO installer or manually upload it
-2. Activate the addon in the REDAXO backend
+1. Addon über den REDAXO-Installer installieren oder manuell hochladen  
+2. Addon im REDAXO-Backend aktivieren  
 
-## Configuration
+## Konfiguration
 
-### Environments
+### Umgebungen
 
-The Environments section allows you to:
+Der Bereich „Umgebungen“ ermöglicht dir:
 
-1. **Define Multiple Environments**: Create sets of environment variables that can be used in different contexts (development, testing, production).
-2. **Select Active Environment**: Choose which environment configuration should be active and available to the frontend.
-3. **Configure JavaScript Variable Name**: Define the global JavaScript variable name that will be used to access environment variables in the browser (default: `ENV`).
+1. **Mehrere Umgebungen definieren**: Erstelle Sets von Umgebungsvariablen für verschiedene Kontexte (z. B. Entwicklung, Test, Produktion).  
+2. **Aktive Umgebung auswählen**: Lege fest, welche Umgebungskonfiguration aktiv ist und im Frontend verfügbar sein soll.  
+3. **JavaScript-Variablennamen konfigurieren**: Definiere den globalen JavaScript-Variablennamen, über den im Browser auf Umgebungsvariablen zugegriffen wird (Standard: `ENV`).
 
+![rex-1](https://github.com/user-attachments/assets/5e2153e8-5717-45b8-a189-7cb350820d63)
 
-### OAuth Configuration
+### OAuth-Konfiguration
 
-The OAuth section allows you to:
+Der Bereich „OAuth“ ermöglicht dir:
 
-1. **Configure Authentication Endpoints**: Set up the OAuth endpoint URLs and required credentials.
-2. **Define OAuth Entry IDs**: Create unique identifiers for each OAuth endpoint.
-3. **Configure Grant Types**: Support for various OAuth grant types, including Client Credentials.
-4. **Manage Client IDs and Secrets**: Securely store authentication credentials.
+1. **Authentifizierungsendpunkte konfigurieren**: Lege die OAuth-Endpunkt-URLs und erforderlichen Zugangsdaten fest.  
+2. **OAuth-Eintrags-IDs definieren**: Erstelle eindeutige Bezeichner für jeden OAuth-Endpunkt.  
+3. **Grant Types konfigurieren**: Unterstützung für verschiedene OAuth-Grant-Typen, aktuell nur Client Credentials supported.  
+4. **Client-IDs und Secrets verwalten**: Authentifizierungsdaten sicher speichern.
 
-### Proxy Configuration
+![rex-2](https://github.com/user-attachments/assets/0b871f19-871a-40de-80e3-9bb7b4162e04)
 
-The Proxy section allows you to:
+### Proxy-Konfiguration
 
-1. **Create API Proxies**: Set up endpoints that act as intermediaries between your frontend and backend APIs.
-2. **Link to OAuth Entries**: Connect proxies to the OAuth configurations for automatic authentication.
-3. **Control SSL Verification**: Enable or disable SSL certificate verification per proxy for development environments.
-4. **Secure API Access**: Keep sensitive authentication information on the server and out of frontend code.
+Der Bereich „Proxy“ ermöglicht dir:
 
-Proxies help you maintain security by preventing exposure of credentials in client-side code. They automatically inject the correct authentication headers into API requests.
+1. **API-Proxys erstellen**: Richte Endpunkte ein, die als Vermittler zwischen deinem Frontend und Backend-APIs fungieren.  
+2. **Mit OAuth-Einträgen verknüpfen**: Verbinde Proxys mit den OAuth-Konfigurationen für automatische Authentifizierung.  
+3. **SSL-Verifizierung steuern**: SSL-Zertifikatsprüfung pro Proxy für Entwicklungsumgebungen ein- oder ausschalten.  
+4. **Sicheren API-Zugriff gewährleisten**: Halte sensible Authentifizierungsinformationen auf dem Server und außerhalb des Frontend-Codes.  
 
-## How It Works
+Proxys helfen, die Sicherheit zu erhöhen, indem sie verhindern, dass Zugangsdaten im Clientcode offengelegt werden. Sie fügen automatisch die korrekten Authentifizierungsheader in API-Anfragen ein.
 
-### 1. Environment Management
+![rex-3](https://github.com/user-attachments/assets/67828759-ee70-4833-b507-073438ff8dae)
 
-- Define multiple environments with different configuration values
-- Set one environment as "active" to make it available in the frontend
-- Access environment variables through a global JavaScript object
-- Control which variable name is used (e.g., `window.ENV`, `window.CONFIG`, etc.)
+## Funktionsweise
 
-### 2. OAuth Integration
+### 1. Verwaltung von Umgebungen
 
-- Configure OAuth endpoints with authentication details
-- Support for different OAuth grant types
-- Automatic token retrieval and renewal
-- Secure storage of client secrets on the server
+- Definiere mehrere Umgebungen mit unterschiedlichen Konfigurationswerten  
+- Setze eine Umgebung als „aktiv“, um sie im Frontend verfügbar zu machen  
+- Greife über ein globales JavaScript-Objekt auf Umgebungsvariablen zu  
+- Bestimme, unter welchem Namen die Variable verfügbar ist (z. B. `window.ENV`, `window.CONFIG`, etc.)  
 
-### 3. API Proxying
+### 2. OAuth-Integration
 
-- Create proxy endpoints that forward requests to external APIs
-- Automatically inject authentication headers into requests
-- Keep sensitive credentials secure by handling authentication on the server
-- Control SSL verification settings for each proxy individually
+- Konfiguriere OAuth-Endpunkte mit Authentifizierungsdetails  
+- Unterstützung für verschiedene OAuth-Grant-Typen  
+- Automatische Token-Abfrage und -Erneuerung  
+- Sichere Speicherung von Client-Secrets auf dem Server  
 
-## Usage Examples
+### 3. API-Proxying
 
-### Accessing Environment Variables in JavaScript
+- Erstelle Proxy-Endpunkte, die Anfragen an externe APIs weiterleiten  
+- Füge automatisch Authentifizierungsheader in Anfragen ein  
+- Halte Zugangsdaten sicher, indem die Authentifizierung serverseitig erfolgt  
+- Steuere SSL-Verifikationseinstellungen für jeden Proxy individuell  
+
+## Anwendungsbeispiele
+
+### Zugriff auf Umgebungsvariablen in JavaScript
 
 ```javascript
-// If using the default variable name "ENV"
-console.log(window.ENV);
+// Bei Nutzung des Standard-Variablennamens "API_ENV"
+console.log(window.API_ENV);
 
-// Access a specific variable
-const apiUrl = window.ENV.API_URL;
-
-### Making Authenticated API Requests
-
-Using the proxy (more secure):
-// The proxy will automatically add authentication headers
-fetch('/index.php?rex-api-call=proxy_request&proxy=my-proxy-id&target=https://....');
+// Zugriff auf eine bestimmte Variable
+const apiUrl = window.API_ENV;
 ```
 
-The proxy approach is more secure because:
-- Authentication credentials remain on the server
-- Tokens are not exposed in frontend code
-- The server can refresh expired tokens automatically
+### Proxy verwenden
 
-## Security Considerations
+```javascript
+// Bei Nutzung des Standard-Variablennamens "API_ENV"
+const myEnv = window.API_ENV;
+const isProd = myEnv === 'production';
+const apiUrl = isProd ? 'https://api.my-prod-api.wow/...' : 'not so wow but still awesome';
 
-- Keep debug mode disabled in production environments
-- SSL verification should only be disabled in development environments
-- Use proxy endpoints instead of exposing tokens directly when possible
-- Regularly rotate OAuth client secrets
+// proxy-id = id von konfiguriertem Proxy Eintrag in Redaxo
+// target = url des angezielten api Endpunktes
+fetch(`${apiUrl}/?rex-api-call=proxy_request&proxy-id=my-cool-proxy-id&target=my-even-cooler-api-endpoint`, ....)
+```
 
-## Support
 
-For support, please create an issue on the [GitHub repository](https://github.com/oldjazjef/redaxo-addon-env-middleware).
-
-## License
-
-MIT License
