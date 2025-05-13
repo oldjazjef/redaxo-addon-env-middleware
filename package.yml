@@ -13,12 +13,14 @@ permissions:
   - env-middleware[]
   - env-middleware[settings]
   - env-middleware[environments]
+  - env-middleware[environments-edit]
+  - env-middleware[environments-select]
   - env-middleware[oauth]
   - env-middleware[proxy]
 
 page:
   title: "translate:env_middleware_title"
-  perm: admin
+  perm: env-middleware[]
   subpages:
     settings: 
       title: "translate:env_middleware_settings" 
