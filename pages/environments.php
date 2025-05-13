@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Environment Middleware Addon - Environments Page
  * 
@@ -9,6 +10,11 @@
 // Get the addon instance
 $addon = rex_addon::get('env-middleware');
 
+$user = rex::getUser();
+$canSelect = $user->isAdmin() || $user->hasPerm('env-middleware[environments-edit]') || $user->hasPerm('env-middleware[environments-select]');
+$canEdit = $user->isAdmin() || $user->hasPerm('env-middleware[environments-edit]');
+
+
 // Initialize variables
 $error = '';
 $success = '';
@@ -18,31 +24,32 @@ $jsVariableName = $addon->getConfig('js_variable_name', 'ENV');
 
 // Form processing
 if (rex_post('save', 'boolean')) {
+
     // Save environment entries
     $newEnvironments = [];
     $entries = rex_post('env_entries', 'array', []);
-    
+
     // Restructure entries into a more suitable format
     foreach ($entries as $entry) {
         if (!empty($entry['name'])) {
             $newEnvironments[$entry['name']] = isset($entry['value']) ? $entry['value'] : '';
         }
     }
-    
+
     // Get JavaScript variable name and active environment
     $newJsVariableName = rex_post('js_variable_name', 'string', 'ENV');
     $newActiveEnvironment = rex_post('active_environment', 'string', '');
-    
+
     // Save environments and settings
     $addon->setConfig('environments', $newEnvironments);
     $addon->setConfig('js_variable_name', $newJsVariableName);
     $addon->setConfig('active_environment', $newActiveEnvironment);
-    
+
     // Update local variables to reflect saved changes
     $environmentData = $newEnvironments;
     $jsVariableName = $newJsVariableName;
     $activeEnvironment = $newActiveEnvironment;
-    
+
     $success = $addon->i18n('settings_saved', 'Settings saved successfully!');
 }
 
@@ -58,6 +65,7 @@ if (!empty($success)) {
 }
 
 // Start the form
+
 $content .= '
 <form action="' . rex_url::currentBackendPage() . '" method="post">
     <div class="panel panel-default">
@@ -81,29 +89,31 @@ $content .= '
 if (empty($environmentData)) {
     $content .= '
                     <tr class="env-entry">
-                        <td><input type="text" class="form-control" name="env_entries[0][name]" value="" /></td>
-                        <td><input type="text" class="form-control" name="env_entries[0][value]" value="" /></td>
-                        <td><button type="button" class="btn btn-delete btn-danger btn-xs"><i class="rex-icon rex-icon-delete"></i></button></td>
+                        <td><input ' . ($canEdit ? '' : 'readonly') . ' type="text" class="form-control" name="env_entries[0][name]" value="" /></td>
+                        <td><input ' . ($canEdit ? '' : 'readonly') . ' type="text" class="form-control" name="env_entries[0][value]" value="" /></td>
+                        <td><button ' . ($canEdit ? '' : 'disabled') . ' type="button" class="btn btn-delete btn-danger btn-xs"><i class="rex-icon rex-icon-delete"></i></button></td>
                     </tr>';
 } else {
     $i = 0;
     foreach ($environmentData as $name => $value) {
         $content .= '
                     <tr class="env-entry">
-                        <td><input type="text" class="form-control" name="env_entries[' . $i . '][name]" value="' . htmlspecialchars($name) . '" /></td>
-                        <td><input type="text" class="form-control" name="env_entries[' . $i . '][value]" value="' . htmlspecialchars($value) . '" /></td>
-                        <td><button type="button" class="btn btn-delete btn-danger btn-xs"><i class="rex-icon rex-icon-delete"></i></button></td>
+                        <td><input ' . ($canEdit ? '' : 'readonly') . ' type="text" class="form-control" name="env_entries[' . $i . '][name]" value="' . htmlspecialchars($name) . '" /></td>
+                        <td><input ' . ($canEdit ? '' : 'readonly') . ' type="text" class="form-control" name="env_entries[' . $i . '][value]" value="' . htmlspecialchars($value) . '" /></td>
+                        <td><button ' . ($canEdit ? '' : 'disabled') . ' type="button" class="btn btn-delete btn-danger btn-xs"><i class="rex-icon rex-icon-delete"></i></button></td>
                     </tr>';
         $i++;
     }
 }
+
+
 
 $content .= '
                 </tbody>
                 <tfoot>
                     <tr>
                         <td colspan="3">
-                            <button type="button" class="btn btn-default btn-add"><i class="rex-icon rex-icon-add"></i> ' . $addon->i18n('add_environment', 'Add Environment') . '</button>
+                            <button ' . ($canEdit ? '' : 'disabled') . ' type="button" class="btn btn-default btn-add"><i class="rex-icon rex-icon-add"></i> ' . $addon->i18n('add_environment', 'Add Environment') . '</button>
                         </td>
                     </tr>
                 </tfoot>
@@ -118,13 +128,13 @@ $content .= '
         <div class="panel-body">
             <div class="form-group">
                 <label for="js-variable-name">' . $addon->i18n('javascript_variable_name', 'JavaScript Variable Name') . '</label>
-                <input type="text" class="form-control" id="js-variable-name" name="js_variable_name" value="' . htmlspecialchars($jsVariableName) . '" />
+                <input type="text" class="form-control" id="js-variable-name" name="js_variable_name" value="' . htmlspecialchars($jsVariableName) . '" ' . ($canEdit ? '' : 'readonly') . ' />
                 <p class="help-block">' . $addon->i18n('javascript_variable_help', 'Your environment variables will be accessible via window.{0} in the frontend', htmlspecialchars($jsVariableName)) . '</p>
             </div>
             
             <div class="form-group">
                 <label for="active-environment">' . $addon->i18n('select_active_environment', 'Select Active Environment') . '</label>
-                <select class="form-control" id="active-environment" name="active_environment">
+                <select class="form-control" id="active-environment" name="active_environment" ' . ($canSelect ? '' : 'readonly') . '>
                     <option value="">' . $addon->i18n('none', 'None') . '</option>';
 
 // Add environment options

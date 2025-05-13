@@ -144,34 +144,10 @@ function getProxyEntryHtml($index, $entry = null, $oauthEntries = []) {
 $content .= '
 <script type="text/javascript">
     $(document).ready(function() {
-        // Add new Proxy entry            $("#add-proxy-entry").on("click", function() {
+        // Add new Proxy entry            
+        $("#add-proxy-entry").on("click", function() {
             var count = $("#proxy-entries-container .proxy-entry").length;
-            var entryHtml = `
-                <div class="proxy-entry panel panel-default">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-sm-10">
-                                <div class="form-group">
-                                    <label>' . $addon->i18n('proxy_id', 'Proxy ID') . '</label>
-                                    <input type="text" class="form-control" name="proxy_entries[${count}][proxy_id]" value="">
-                                    <p class="help-block">' . $addon->i18n('proxy_id_help', 'A unique identifier for this proxy entry') . '</p>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>' . $addon->i18n('proxy_oauth_entry_id', 'OAuth Entry') . '</label>
-                                    <select class="form-control" name="proxy_entries[${count}][oauth_entry_id]">`;
-                                    <p class="help-block">' . $addon->i18n('proxy_oauth_entry_id_help', 'Select the OAuth entry to use for authentication') . '</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-2 text-right">
-                                <button type="button" class="btn btn-danger remove-proxy-entry">
-                                    <i class="rex-icon rex-icon-delete"></i> ' . $addon->i18n('proxy_remove_proxy_entry', 'Remove') . '
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
+            var entryHtml = `'. getProxyEntryHtml(count($proxyEntries), null, $oauthEntries) . '`;
             $("#proxy-entries-container").append(entryHtml);
         });
         

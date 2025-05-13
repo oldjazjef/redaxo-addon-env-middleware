@@ -9,11 +9,28 @@ requires:
 
 boot: true
 
+permissions:
+  - env-middleware[]
+  - env-middleware[settings]
+  - env-middleware[environments]
+  - env-middleware[environments-edit]
+  - env-middleware[environments-select]
+  - env-middleware[oauth]
+  - env-middleware[proxy]
+
 page:
   title: "translate:env_middleware_title"
-  perm: admin
+  perm: env-middleware[]
   subpages:
-    settings: { title: "translate:env_middleware_settings" }
-    environments: { title: "translate:env_middleware_environments" }
-    oauth: { title: "translate:env_middleware_oauth" }
-    proxy: { title: "translate:env_middleware_proxy" }
+    settings: 
+      title: "translate:env_middleware_settings" 
+      perm: env-middleware[settings]
+    environments: 
+      title: "translate:env_middleware_environments"
+      perm: env-middleware[environments]
+    oauth: 
+      title: "translate:env_middleware_oauth" 
+      perm: env-middleware[oauth]
+    proxy: 
+      title: "translate:env_middleware_proxy" 
+      perm: env-middleware[proxy]
